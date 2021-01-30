@@ -1,0 +1,164 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Extensa\Careers\Block\Job $block */
+
+?>
+<?php
+$job = $block->getJob();
+?>
+<div id="positionslist">
+    <div class="page-title-wrapper">
+        <h1 class="page-title">
+            <span><?= __('Name ') . $block->escapeHtml($job->getName()) ?></span>
+        </h1>
+        <div class="position-info">
+            Code: <?= nl2br($job->getCode()) ?><br/>
+            Description: <?= nl2br($job->getDescription()) ?>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-10 col-sm-offset-1"
+         data-mage-init='{
+            "collapsible":{
+                "active": true,
+                "openedState": "active",
+                "animate":{ "duration" :500, "easing":"easeOutCubic"}
+            }}'>
+        <h2 class="gform-title" data-role="title">
+            <span>Apply for this Career</span>
+        </h2>
+        <div class="gform_wrapper" id="gform_wrapper" style="" data-role="content">
+            <a id="gf" class="gform_anchor"></a>
+            <form method="post" enctype="multipart/form-data" id="gform"
+                  action="<?= $block->escapeUrl($block->getFormAction()); ?>"
+                  data-mage-init='{"validation":{}}'>
+                <fieldset class="fieldset">
+                    <input type="hidden" name="job" value="<?= $block->escapeHtml($job->getName()); ?>">
+                    <div class="fields">
+                        <div class="field firstname required">
+                            <label class="label"
+                                   for="firstname"><span><?= $block->escapeHtmlAttr('Firstname'); ?></span>
+                            </label>
+                            <div class="control">
+                                <input name="firstname" id="firstname"
+                                       title="<?= $block->escapeHtmlAttr('Firstname') ?>"
+                                       class="input-text"
+                                       type="text" data-validate="{required:true}"/>
+                            </div>
+                        </div>
+                        <div class="field lastname required">
+                            <label class="label"
+                                   for="lastname"><span><?= $block->escapeHtmlAttr('Lastname') ?></span></label>
+                            <div class="control">
+                                <input name="lastname" id="lastname" title="<?= $block->escapeHtmlAttr('Lastname') ?>"
+                                       class="input-text"
+                                       type="text" data-validate="{required:true}"/>
+                            </div>
+                        </div>
+                        <div class="field email required">
+                            <label class="label" for="email"><span><?= $block->escapeHtmlAttr('Email') ?></span></label>
+                            <div class="control">
+                                <input name="email" id="email" title="<?= $block->escapeHtmlAttr('Email') ?>"
+                                       class="input-text"
+                                       type="email"
+                                       data-validate="{required:true, 'validate-email':true}"/>
+                            </div>
+                        </div>
+                        <div class="field phone required">
+                            <label class="label" for="phone"><span><?= $block->escapeHtmlAttr('Phone') ?></span></label>
+                            <div class="control">
+                                <input name="phone" id="phone" title="<?= $block->escapeHtmlAttr('Phone') ?>"
+                                       class="input-text"
+                                       type="text"
+                                       data-validate="{required:true}"/>
+                            </div>
+                        </div>
+                        <div class="field street required">
+                            <label class="label"
+                                   for="street"><span><?= $block->escapeHtmlAttr('Street') ?></span></label>
+                            <div class="control">
+                                <input name="street" id="street" title="<?= $block->escapeHtmlAttr('Street') ?>"
+                                       class="input-text"
+                                       type="text" data-validate="{required:true}"/>
+                            </div>
+                        </div>
+                        <div class="field city required">
+                            <label class="label" for="city"><span><?= $block->escapeHtmlAttr('City') ?></span></label>
+                            <div class="control">
+                                <input name="city" id="city" title="<?= $block->escapeHtmlAttr('City') ?>"
+                                       class="input-text"
+                                       type="text"
+                                       data-validate="{required:true}"/>
+                            </div>
+                        </div>
+                        <div class="field state required">
+                            <label class="label" for="state"><span><?= $block->escapeHtmlAttr('State') ?></span></label>
+                            <div class="control">
+                                <input name="state" id="state" title="<?= $block->escapeHtmlAttr('State') ?>"
+                                       class="input-text"
+                                       type="text"
+                                       data-validate="{required:true}"/>
+                            </div>
+                        </div>
+                        <div class="field zip required">
+                            <label class="label" for="zip"><span><?= $block->escapeHtmlAttr('Zip') ?></span></label>
+                            <div class="control">
+                                <input name="zip" id="zip" title="<?= $block->escapeHtmlAttr('Zip') ?>"
+                                       class="input-text"
+                                       type="text"
+                                       data-validate="{required:true}"/>
+                            </div>
+                        </div>
+                        <div class="field country required">
+                            <label class="label"
+                                   for="country"><span><?= $block->escapeHtmlAttr('Country') ?></span></label>
+                            <div class="control">
+                                <input name="country" id="country" title="<?= $block->escapeHtmlAttr('Country') ?>"
+                                       class="input-text"
+                                       type="text" data-validate="{required:true}"/>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="fieldset">
+                    <div id="resume" class="field required">
+                        <div>
+                            <label class="button action primary" for="resume_file">Upload Resume</label>
+                            <input type="hidden" name="MAX_FILE_SIZE" value="83886080">
+                            <input name="resume" id="resume_file" type="file" data-validate='{"required":true}'>
+                            <span id="extensions_message_5"
+                                  class="screen-reader-text">Accepted file types: pdf, doc, docx.</span>
+                            <div class="validation_message"></div>
+                        </div>
+                    </div>
+                    <div id="about_position_other_content" class="field" style="display: none;">
+                        <div>
+                        <textarea name="about_position_other" id="about_position_other"
+                                  placeholder="If other please explain:" rows="10" cols="50"
+                                  data-validate="{required:true}"></textarea>
+                        </div>
+                    </div>
+                    <div id="additional_comments_content">
+                        <div>
+                        <textarea name="additional_comments" id="additional_comments" placeholder="Additional Comments"
+                                  rows="10" cols="50"></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="actions-toolbar">
+                    <div class="primary">
+                        <button type="submit" class="action submit primary" title="Submit">
+                            <span><?= $block->escapeHtmlAttr('Submit') ?></span></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</form>

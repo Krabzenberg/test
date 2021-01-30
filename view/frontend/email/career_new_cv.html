@@ -1,0 +1,66 @@
+<!--@subject You have new Job Application @-->
+
+{{template config_path="design/email/header_template"}}
+<table>
+    <tr>
+        <td>
+            Job: {{var job}}
+        </td>
+    </tr>
+    <tr class="email-intro">
+        <td>
+            Email: {{var email}}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Firstname: {{var firstname}}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Lastname: {{var lastname}}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Phone: {{var phone}}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Street: {{var street}}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            City: {{var city}}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            State: {{var state}}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Zip: {{var zip}}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Country: {{var country}}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Additional Comments: {{var additional_comments}}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            CV: <a href="{{var file.url}}" download="{{var file.name}}">{{var file.name}}</a>
+        </td>
+    </tr>
+</table>
+{{template config_path="design/email/footer_template"}}

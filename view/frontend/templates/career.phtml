@@ -1,0 +1,56 @@
+<?php
+$title = $block->getTitle();
+$careerBlock = $block->getLayout()->createBlock(\Magento\Cms\Block\Block::class)->setBlockId('career-block');
+$categories = $block->getCategories();
+$jobs = $block->getJobs();
+?>
+<section class="accent mb-xxl">
+    <div class="wrapper wrapper--inner">
+        <header class="section-header section-header--center">
+            <h2 class="title title--xl"><?= $title ? $block->escapeHtml(__($title)) : $block->escapeHtml(__('Careers')) ?></h2>
+        </header>
+        <?= $careerBlock ? $careerBlock->toHtml() : '' ?>
+    </div>
+</section>
+
+<?php if (count($categories)) : ?>
+    <div class="categories-list">
+        <?php foreach ($categories as $category) : ?>
+            <div class="category" data-categoryid="<?= $block->escapeQuote($category->getId()) ?>">
+                <?= $block->escapeQuote($category->getName()) ?>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+    <div class="jobs-list">
+        <?php foreach ($jobs as $job) : ?>
+            <div class="job category-<?= $block->escapeQuote($job->getCategoryId()) ?>">
+                <div class="name"><?= $block->escapeQuote($job->getName()) ?></div>
+                <div class="short-description"><?= $block->escapeQuote($job->getShortDescription()) ?></div>
+                <div class="apply-page">
+                    <a href="<?= $block->escapeUrl($block->getUrl('careers/job/index', ['id' => $job->getId()])); ?>">
+                        <?= $block->escapeQuote(__('Read More and Apply')) ?>
+                    </a>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+    <script>
+        require([
+            'jquery'
+        ], function ($) {
+
+            $('.categories-list .category').click(function () {
+                $('.categories-list .category').removeClass('active');
+                $(this).addClass('active');
+
+                let categoryid = $(this).data('categoryid');
+
+                $('.jobs-list .job').hide();
+                $('.jobs-list .category-' + categoryid).show();
+            });
+        });
+    </script>
+<?php endif; ?>
+

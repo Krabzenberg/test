@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+
+    <template id="extensa_careers_settings_email_template_application_cv"
+              label="New CV"
+              file="career_new_cv.html"
+              type="html" module="Extensa_Careers" area="frontend"/>
+</config>
+

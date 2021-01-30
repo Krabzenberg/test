@@ -1,0 +1,27 @@
+{
+    "extensa_careers_categories": {
+        "column": {
+            "category_id": true,
+            "store": true,
+            "name": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "extensa_careers_jobs": {
+        "column": {
+            "job_id": true,
+            "store": true,
+            "category_id": true,
+            "code": true,
+            "name": true,
+            "short_description": true,
+            "description": true
+        },
+        "constraint": {
+            "EXTENSA_CAREERS_JOBS_CTGR_ID_EXTENSA_CAREERS_CATEGORIES_CTGR_ID": true,
+            "PRIMARY": true
+        }
+    }
+}
